@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyFellows.API", "MoneyFellows.API.csproj", "{DE5B91B5-A62E-421C-80B6-53C16DED7ECA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{78AC22ED-5F22-43ED-9AB4-A9DBFC5D2CF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FC87CAC0-F4E8-4BBB-A551-71A73DCE6411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyFellows.Core", "..\MoneyFellows.Core\MoneyFellows.Core.csproj", "{3014DC85-1F54-4315-8D0B-3E02BAB25F3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyFellows.Application", "..\MoneyFellows.Application\MoneyFellows.Application.csproj", "{A2157E8A-2FB1-493F-B3D9-CB26DB76729D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyFellows.Infrastructure", "..\MoneyFellows.Infrastructure\MoneyFellows.Infrastructure.csproj", "{1F8778C9-D3A7-495D-AC4C-7693D84BFE0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE5B91B5-A62E-421C-80B6-53C16DED7ECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5B91B5-A62E-421C-80B6-53C16DED7ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5B91B5-A62E-421C-80B6-53C16DED7ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5B91B5-A62E-421C-80B6-53C16DED7ECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3014DC85-1F54-4315-8D0B-3E02BAB25F3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3014DC85-1F54-4315-8D0B-3E02BAB25F3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3014DC85-1F54-4315-8D0B-3E02BAB25F3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3014DC85-1F54-4315-8D0B-3E02BAB25F3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2157E8A-2FB1-493F-B3D9-CB26DB76729D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2157E8A-2FB1-493F-B3D9-CB26DB76729D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2157E8A-2FB1-493F-B3D9-CB26DB76729D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2157E8A-2FB1-493F-B3D9-CB26DB76729D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F8778C9-D3A7-495D-AC4C-7693D84BFE0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8778C9-D3A7-495D-AC4C-7693D84BFE0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8778C9-D3A7-495D-AC4C-7693D84BFE0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8778C9-D3A7-495D-AC4C-7693D84BFE0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE5B91B5-A62E-421C-80B6-53C16DED7ECA} = {78AC22ED-5F22-43ED-9AB4-A9DBFC5D2CF4}
+		{3014DC85-1F54-4315-8D0B-3E02BAB25F3E} = {78AC22ED-5F22-43ED-9AB4-A9DBFC5D2CF4}
+		{A2157E8A-2FB1-493F-B3D9-CB26DB76729D} = {78AC22ED-5F22-43ED-9AB4-A9DBFC5D2CF4}
+		{1F8778C9-D3A7-495D-AC4C-7693D84BFE0A} = {78AC22ED-5F22-43ED-9AB4-A9DBFC5D2CF4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB25E90E-033C-477E-A88D-888A77AB16C4}
+	EndGlobalSection
+EndGlobal
