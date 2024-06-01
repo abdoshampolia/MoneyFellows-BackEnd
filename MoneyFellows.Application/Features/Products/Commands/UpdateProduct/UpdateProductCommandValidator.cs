@@ -6,6 +6,9 @@ namespace MoneyFellows.Application.Features.Products.Commands.UpdateProduct
     {
         public UpdateProductCommandValidator()
         {
+            RuleFor(p => p.Id)
+               .NotEmpty().WithMessage("Product Id  is required.");
+
             RuleFor(p => p.Name)
                 .NotEmpty().WithMessage("ProductName is required.")
                 .Matches(@"^[a-zA-Z0-9]*$").WithMessage("ProductName must be alphanumeric.");

@@ -4,6 +4,7 @@ namespace MoneyFellows.Application.Dtos.Products
 {
     public class ProductDto
     {
+        public Guid? Id { get; set; }
         public string? Name { get; }
         public string? Description { get;  }
         public string? ImageUrl { get;  }

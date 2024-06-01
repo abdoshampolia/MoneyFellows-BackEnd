@@ -47,7 +47,8 @@ namespace MoneyFellows.Application.Features.Products.Commands.UpdateProduct
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Error updateing product");
+
+                _logger.Error(ex, "Unexpected error occurred while updating product");
                 throw ex;
             }
         }

@@ -13,6 +13,7 @@ namespace MoneyFellows.Core.Entities
             Merchant = merchant;
             ProductsOrder = [];
         }
+        protected Product():base(Guid.Empty){} 
 
         public string Name { get; private set; }
         public string Description { get; private set; }

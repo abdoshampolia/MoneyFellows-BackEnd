@@ -9,5 +9,19 @@ namespace MoneyFellows.Infrastructure.Repository
     {
         public OrderRepository(MoneyFellowsDbContext context) : base(context)
         { }
+
+        public override IQueryable<Order> OrderBy(IQueryable<Order> entities, string? orderBy, bool isAccending = true)
+        {
+            if (orderBy != null)
+            {
+                switch (orderBy.ToLower())
+                {
+                    case "deliveryTime":
+                        entities = isAccending ? entities.OrderBy(a => a.DeliveryTime) : entities.OrderByDescending(a => a.DeliveryTime);
+                        break;
+                }
+            }
+            return entities;
+        }
     }
 }

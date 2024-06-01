@@ -46,7 +46,7 @@ namespace MoneyFellows.Application.Features.Products.Commands.DeleteProduct
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Error deleting product");
+                _logger.Error(ex, "Unexpected error occurred while deleting product");
                 throw ex;
             }
         }

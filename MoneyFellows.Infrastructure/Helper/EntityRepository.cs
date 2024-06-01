@@ -2,6 +2,7 @@
 using MoneyFellows.Core.Common.Contracts;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using MoneyFellows.Application.Dtos.Common.Extensions;
 
 namespace MoneyFellows.Infrastructure.Helper
 {
@@ -28,7 +29,8 @@ namespace MoneyFellows.Infrastructure.Helper
         }
         public async Task<TEntity?> GetByIdAsync(Guid id, string? includeProperties = null)
         {
-            return (await GetAsync(a => a.Id.Equals(id))).FirstOrDefault();
+            return (await GetAsync(a => a.Id.Equals(id))).IncludeProperties(includeProperties).FirstOrDefault();
+
         }
         public virtual async Task<TEntity> CreateOnDbAsync(TEntity entity)
         {
@@ -81,6 +83,8 @@ namespace MoneyFellows.Infrastructure.Helper
             Context.Dispose();
             GC.SuppressFinalize(this);
         }
+        public abstract IQueryable<TEntity> OrderBy(IQueryable<TEntity> entities, string? orderBy, bool isAccending = true);
+
         ~EntityRepository()
         {
             Dispose();

@@ -41,7 +41,7 @@ namespace MoneyFellows.Application.Features.Products.Commands.CreateProduct
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Error adding product");
+                _logger.Error(ex, "Unexpected error occurred while adding product");
                 throw ex;
             }
         }

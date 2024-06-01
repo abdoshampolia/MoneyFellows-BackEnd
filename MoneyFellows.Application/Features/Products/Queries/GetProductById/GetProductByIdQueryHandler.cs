@@ -42,7 +42,7 @@ namespace MoneyFellows.Application.Features.Products.Queries.GetProductById
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Error get product");
+                _logger.Error(ex, "Unexpected error occurred while retrieving product");
                 throw ex;
             }
         }

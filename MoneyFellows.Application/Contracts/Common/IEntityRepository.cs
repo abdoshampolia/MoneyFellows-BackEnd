@@ -14,5 +14,6 @@ namespace MoneyFellows.Application.Contracts.Common
         Task<bool> DeleteAsync(Guid id);
         void DeleteRange(params Guid[] entitiesIds);
         Task<int> SaveChangesAsync();
+        IQueryable<TEntity> OrderBy(IQueryable<TEntity> entities, string? orderBy, bool isAccending = true);
     }
 }
