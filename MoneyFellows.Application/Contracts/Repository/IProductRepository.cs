@@ -5,6 +5,6 @@ namespace MoneyFellows.Application.Contracts.Repository
 {
     public interface IProductRepository : IModifiableEntityRepository<Product>
     {
-        Task<IQueryable<Product>> FilterByAsync(string? filter = null);
+        //Task<IQueryable<Product>> FilterByAsync(string? filter = null);
     }
 }
