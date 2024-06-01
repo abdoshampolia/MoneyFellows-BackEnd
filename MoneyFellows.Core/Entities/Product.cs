@@ -4,7 +4,7 @@ namespace MoneyFellows.Core.Entities
 {
     public class Product : ModifiableEntity
     {
-        public Product(Guid creatorUserId ,string name, string description, byte[] image, decimal price, string merchant) : base(creatorUserId)
+        public Product(Guid creatorUserId, string name, string description, byte[] image, decimal price, string merchant) : base(creatorUserId)
         {
             Name = name;
             Description = description;
@@ -16,11 +16,111 @@ namespace MoneyFellows.Core.Entities
 
         public string Name { get; private set; }
         public string Description { get; private set; }
-        public string ImageUrl { get; private set; }
+        //public string ImageUrl { get; private set; }
         public byte[] Image { get; private set; } // Blob type
         public decimal Price { get; private set; }
         public string Merchant { get; private set; }
         public ICollection<ProductOrder> ProductsOrder { get; set; }
-    }
 
+        public bool ChangeName(string name)
+        {
+            bool result = false;
+
+            if ((Name != name))
+            {
+                Name = name;
+                ModifiedOn = DateTime.Now;
+                result = true;
+            }
+            return result;
+        }
+        public bool ChangeDescription(string? description)
+        {
+            bool result = false;
+
+            if (Description != description)
+            {
+                Description = description;
+                ModifiedOn = DateTime.Now;
+                result = true;
+            }
+            return result;
+        }
+        public bool ChangeImage(byte[]? image)
+        {
+            bool result = false;
+
+            if (Image != image && image != null)
+            {
+                Image = image;
+                ModifiedOn = DateTime.Now;
+                result = true;
+            }
+            return result;
+        }
+        public bool ChangeMerchant(string merchant)
+        {
+            bool result = false;
+
+            if ((Merchant != merchant))
+            {
+                Merchant = merchant;
+                ModifiedOn = DateTime.Now;
+                result = true;
+            }
+            return result;
+        }
+        public bool ChangePrice(decimal? price)
+        {
+            bool result = false;
+
+            if (Price != price)
+            {
+                Price = (decimal)price;
+                ModifiedOn = DateTime.Now;
+                result = true;
+            }
+            return result;
+        }
+
+        public bool EditProduct(string name, string description, decimal? price, byte[]? image)
+        {
+            bool result = false;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                if (ChangeName(name))
+                {
+                    result = true;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                if (ChangeDescription(description))
+                {
+                    result = true;
+                }
+            }
+
+            if (price != null)
+            {
+                if (ChangePrice(price))
+                {
+                    result = true;
+                }
+            }
+
+            if (image != null)
+            {
+                if (ChangeImage(image))
+                {
+                    result = true;
+                }
+            }
+
+            return result;
+        }
+
+    }
 }

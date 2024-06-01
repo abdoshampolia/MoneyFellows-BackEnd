@@ -21,10 +21,12 @@ namespace MoneyFellows.Application.Features.Products.Commands.CreateProduct
         {
             try
             {
-                var existingProduct = _productRepository.GetAsync(p => p.Name == request.Name);
+                var existingProduct = await _productRepository.GetAsync(p => p.Name == request.Name);
 
                 if (existingProduct is null)
                 {
+                    //We must track the creator user and send it to creator user id 
+
                     var newProduct = new Product(Guid.NewGuid(), request.Name, request.Description, request.Image, request.Price, request.Merchant);
                     newProduct = await _productRepository.CreateOnDbAsync(newProduct);
                     _logger.Information("Product added successfully: {ProductName}", newProduct.Name);
