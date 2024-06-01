@@ -1,4 +1,5 @@
-﻿using MoneyFellows.Application.Contracts.Repository;
+﻿using Microsoft.EntityFrameworkCore;
+using MoneyFellows.Application.Contracts.Repository;
 using MoneyFellows.Core.Entities;
 using MoneyFellows.Infrastructure.Common;
 using MoneyFellows.Infrastructure.Contexts;
