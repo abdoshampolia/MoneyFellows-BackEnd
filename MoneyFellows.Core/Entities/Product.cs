@@ -4,7 +4,7 @@ namespace MoneyFellows.Core.Entities
 {
     public class Product : ModifiableEntity
     {
-        public Product(Guid creatorUserId, string name, string description, byte[] image, decimal price, string merchant) : base(creatorUserId)
+        public Product(Guid creatorUserId, string name, string description, byte[] image, double price, string merchant) : base(creatorUserId)
         {
             Name = name;
             Description = description;
@@ -19,7 +19,7 @@ namespace MoneyFellows.Core.Entities
         public string Description { get; private set; }
         //public string ImageUrl { get; private set; }
         public byte[] Image { get; private set; } // Blob type
-        public decimal Price { get; private set; }
+        public double Price { get; private set; }
         public string Merchant { get; private set; }
         public ICollection<ProductOrder> ProductsOrder { get; set; }
 
@@ -71,20 +71,20 @@ namespace MoneyFellows.Core.Entities
             }
             return result;
         }
-        public bool ChangePrice(decimal? price)
+        public bool ChangePrice(double? price)
         {
             bool result = false;
 
             if (Price != price)
             {
-                Price = (decimal)price;
+                Price = (double)price;
                 ModifiedOn = DateTime.Now;
                 result = true;
             }
             return result;
         }
 
-        public bool EditProduct(string name, string description, decimal? price, byte[]? image)
+        public bool EditProduct(string name, string description, double? price, byte[]? image)
         {
             bool result = false;
 

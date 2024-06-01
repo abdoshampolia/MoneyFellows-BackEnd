@@ -20,7 +20,7 @@ namespace MoneyFellows.Core.Entities
         }
 
         public string DeliveryAddress { get; private set; }
-        public decimal TotalCost { get; private set; }
+        public double TotalCost { get; private set; }
         public DateTime DeliveryTime { get; private set; }
 
         public Guid UserId { get; private set; }

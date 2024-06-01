@@ -18,7 +18,7 @@ builder.Services.AddDbContext<MoneyFellowsDbContext>(options =>
        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Register Identity
-builder.Services.AddIdentity<User, IdentityRole>()
+builder.Services.AddIdentity<User, Role>()
 .AddEntityFrameworkStores<MoneyFellowsDbContext>()
 .AddDefaultTokenProviders();
 

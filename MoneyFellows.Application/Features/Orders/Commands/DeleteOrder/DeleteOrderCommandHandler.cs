@@ -22,7 +22,7 @@ namespace MoneyFellows.Application.Features.Orders.Commands.DeleteOrder
             {
                 var existingOrder = await _orderRepository.GetByIdAsync(request.Id);
 
-                if (existingOrder != null && existingOrder.DeliveryTime < DateTime.UtcNow)
+                if (existingOrder != null && existingOrder.DeliveryTime < DateTime.Now)
                 {
                     _logger.Warning("Attempt to create an order with past delivery time: {DeliveryTime}", existingOrder.DeliveryTime);
                     return Response.Fail<bool>("Cannot create an order with a past delivery time.");
