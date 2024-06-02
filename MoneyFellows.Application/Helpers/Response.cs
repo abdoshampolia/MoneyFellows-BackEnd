@@ -1,5 +1,4 @@
-﻿namespace MoneyFellows.Application.Helper
-{
+﻿namespace MoneyFellows.Application.Helpers;
     public static class Response
     {
         public static Response<T> Fail<T>(string message) =>
@@ -20,4 +19,3 @@
         public string? Message { get; set; }
         public bool? Error { get; set; }
     }
-}

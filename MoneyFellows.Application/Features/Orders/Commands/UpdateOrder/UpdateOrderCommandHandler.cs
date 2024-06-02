@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using MoneyFellows.Application.Contracts.Repository;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 using Serilog;
 
 namespace MoneyFellows.Application.Features.Orders.Commands.UpdateOrder
@@ -20,7 +20,7 @@ namespace MoneyFellows.Application.Features.Orders.Commands.UpdateOrder
         {
             try
             {
-                var existingOrder = await _orderRepository.GetByIdAsync(request.Id);
+                var existingOrder = await _orderRepository.GetByIdAsync(request.Id, "ProductsOrder.Product");
 
                 if (existingOrder is not null)
                 {

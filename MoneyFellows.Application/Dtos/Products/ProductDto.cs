@@ -5,12 +5,12 @@ namespace MoneyFellows.Application.Dtos.Products
     public class ProductDto
     {
         public Guid? Id { get; set; }
-        public string? Name { get; }
-        public string? Description { get;  }
-        public string? ImageUrl { get;  }
-        public byte[]? Image { get; } 
-        public decimal? Price { get; }
-        public string? Merchant { get;  }
-        public ICollection<ProductOrderDto>? ProductsOrder { get; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public string? ImageUrl { get; set; }
+        public string? Image { get; set; }
+        public double? Price { get; set; }
+        public string? Merchant { get; set; }
+        public ICollection<ProductOrderDto>? ProductsOrder { get; set; }
     }
 }

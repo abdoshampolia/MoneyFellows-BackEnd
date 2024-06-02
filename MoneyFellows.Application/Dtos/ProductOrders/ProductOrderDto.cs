@@ -1,4 +1,5 @@
-﻿using MoneyFellows.Core.Entities;
+﻿using MoneyFellows.Application.Dtos.Products;
+using MoneyFellows.Core.Entities;
 
 namespace MoneyFellows.Application.Dtos.ProductOrders
 {
@@ -9,6 +10,6 @@ namespace MoneyFellows.Application.Dtos.ProductOrders
         public Guid? ProductId { get; set; }
         public int Quantity { get; set; }
         //public Order? Order { get; set; }
-        public Product? Product { get; set; }
+        public ProductDto? Product { get; set; }
     }
 }

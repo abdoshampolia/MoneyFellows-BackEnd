@@ -12,24 +12,5 @@ namespace MoneyFellows.Infrastructure.Helper
         {
         }
 
-        public async Task<bool> DeleteLogicalAsync(Guid userId, Guid id)
-        {
-            TEntity? entityToDelete = await GetByIdAsync(id);
-            if (entityToDelete != null)
-            {
-                entityToDelete.IsDeleted = true;
-                entityToDelete.DeletedOn = DateTime.Now;
-                entityToDelete.DeletingUserId = userId;
-                return true;
-            }
-            return false;
-        }
-        public async void DeleteRangeLogicalAsync(Guid userId, params Guid[] entitiesIds)
-        {
-            foreach (var id in entitiesIds)
-            {
-                await DeleteLogicalAsync(userId, id);
-            }
-        }
     }
 }

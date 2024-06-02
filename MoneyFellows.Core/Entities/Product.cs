@@ -4,11 +4,11 @@ namespace MoneyFellows.Core.Entities
 {
     public class Product : ModifiableEntity
     {
-        public Product(Guid creatorUserId, string name, string description, byte[] image, double price, string merchant) : base(creatorUserId)
+        public Product(Guid creatorUserId, string name, string description, string image, double price, string merchant) : base(creatorUserId)
         {
             Name = name;
             Description = description;
-            Image = image;
+            ImageUrl = image;
             Price = price;
             Merchant = merchant;
             ProductsOrder = [];
@@ -17,8 +17,7 @@ namespace MoneyFellows.Core.Entities
 
         public string Name { get; private set; }
         public string Description { get; private set; }
-        //public string ImageUrl { get; private set; }
-        public byte[] Image { get; private set; } // Blob type
+        public string ImageUrl { get; private set; } 
         public double Price { get; private set; }
         public string Merchant { get; private set; }
         public ICollection<ProductOrder> ProductsOrder { get; set; }
@@ -47,13 +46,13 @@ namespace MoneyFellows.Core.Entities
             }
             return result;
         }
-        public bool ChangeImage(byte[]? image)
+        public bool ChangeImage(string? image)
         {
             bool result = false;
 
-            if (Image != image && image != null)
+            if (ImageUrl != image && image != null)
             {
-                Image = image;
+                ImageUrl = image;
                 ModifiedOn = DateTime.Now;
                 result = true;
             }
@@ -84,7 +83,7 @@ namespace MoneyFellows.Core.Entities
             return result;
         }
 
-        public bool EditProduct(string name, string description, double? price, byte[]? image)
+        public bool EditProduct(string name, string description, double? price, string? image)
         {
             bool result = false;
 
@@ -112,7 +111,7 @@ namespace MoneyFellows.Core.Entities
                 }
             }
 
-            if (image != null)
+            if (!string.IsNullOrEmpty(image))
             {
                 if (ChangeImage(image))
                 {

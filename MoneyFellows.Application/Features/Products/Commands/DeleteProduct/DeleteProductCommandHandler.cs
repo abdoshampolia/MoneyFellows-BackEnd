@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using MoneyFellows.Application.Contracts.Repository;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 using Serilog;
 
 namespace MoneyFellows.Application.Features.Products.Commands.DeleteProduct

@@ -29,7 +29,7 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginDt
     {
         try
         {
-            var user = await _userManager.FindByEmailAsync(request.UserName);
+            var user = await _userManager.FindByEmailAsync(request.Email);
 
             if (user == null)
             {
@@ -61,7 +61,10 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginDt
     private string GenerateJwtToken(User user, IList<string> roles)
     {
         var jwtSettings = _configuration.GetSection("Jwt");
-        var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+
         var tokenHandler = new JwtSecurityTokenHandler();
         var claims = new List<Claim>
         {
@@ -73,14 +76,13 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginDt
 
         // Add role claims
         claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
-
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddMinutes(Convert.ToDouble(jwtSettings["ExpiresInMinutes"])),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            Expires = DateTime.Now.AddHours(1),
+            SigningCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256),
+            Issuer = _configuration["Jwt:Issuer"]
         };
-
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
     }

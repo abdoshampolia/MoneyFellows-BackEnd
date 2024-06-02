@@ -1,13 +1,13 @@
 ﻿using MediatR;
 using MoneyFellows.Application.Dtos.Common;
 using MoneyFellows.Application.Dtos.Products;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 
 namespace MoneyFellows.Application.Features.Products.Queries.GetAllProducts
 {
-    public class GetAllProductsQuery : PageRequest, IRequest<Response<ListingDto<ProductDto>>>
+    public class GetProductsQuery : PageRequest, IRequest<Response<ListingDto<ProductDto>>>
     {
-        public GetAllProductsQuery()
+        public GetProductsQuery()
         {
 
         }

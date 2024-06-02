@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using MoneyFellows.Application.Dtos.Orders;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 
 namespace MoneyFellows.Application.Features.Orders.Queries.GetOrderById
 {

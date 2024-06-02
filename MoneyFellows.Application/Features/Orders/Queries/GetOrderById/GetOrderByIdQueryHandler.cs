@@ -2,7 +2,7 @@
 using MediatR;
 using MoneyFellows.Application.Contracts.Repository;
 using MoneyFellows.Application.Dtos.Orders;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 using MoneyFellows.Core.Entities;
 using Serilog;
 

@@ -10,9 +10,9 @@ namespace MoneyFellows.Application.Dtos.Common.Mapping
     {
         public AutoMapperProfile()
         {
-            CreateMap<Product, ProductDto>();
-            CreateMap<Order, OrderDto>();
-            CreateMap<ProductOrder, ProductOrderDto>();
+            CreateMap<Product, ProductDto>().MaxDepth(2);
+            CreateMap<Order, OrderDto>().MaxDepth(1);
+            CreateMap<ProductOrder, ProductOrderDto>().MaxDepth(2);
         }
     }
 }

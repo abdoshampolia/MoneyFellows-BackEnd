@@ -6,7 +6,7 @@ namespace MoneyFellows.Core.Entities
 {
     public class Order : ModifiableEntity
     {
-        public Order(Guid creatorUserId, string deliveryAddress,  DateTime deliveryTime, Guid userId) : base(creatorUserId)
+        public Order(Guid creatorUserId, string deliveryAddress, DateTime deliveryTime, Guid userId) : base(creatorUserId)
         {
             DeliveryAddress = deliveryAddress;
             DeliveryTime = deliveryTime;
@@ -26,7 +26,7 @@ namespace MoneyFellows.Core.Entities
         public Guid UserId { get; private set; }
         public User User { get; private set; }
 
-        public ICollection<ProductOrder> ProductsOrder { get; private set; }
+        public ICollection<ProductOrder>? ProductsOrder { get; private set; }
 
 
         public bool ChangeDeliveryAddress(string deliveryAddress)
@@ -53,7 +53,7 @@ namespace MoneyFellows.Core.Entities
             }
             return result;
         }
-        public bool EditOrder(string deliveryAddress, DateTime deliveryTime , ProductOrderVM[] ids)
+        public bool EditOrder(string deliveryAddress, DateTime deliveryTime, ProductOrderVM[] ids)
         {
             bool result = false;
 
@@ -99,11 +99,19 @@ namespace MoneyFellows.Core.Entities
             if (productsOrder?.Count > 0)
             {
                 ProductsOrder = productsOrder;
-                TotalCost = productsOrder.Sum(po => po.Quantity * po.Product.Price);
                 result = true;
             }
 
             return result;
+        }
+        public double CalculateTotalCost()
+        {
+            double totalCost = 0;
+            foreach (var productsOrder in ProductsOrder)
+            {
+                totalCost += productsOrder.Product.Price * productsOrder.Quantity;
+            }
+            return totalCost;
         }
 
     }

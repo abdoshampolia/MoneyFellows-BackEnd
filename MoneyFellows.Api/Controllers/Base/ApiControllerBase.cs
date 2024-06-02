@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MoneyFellows.API.Controllers
+namespace MoneyFellows.API.Controllers.Base
 {
     [Route("api/[controller]")]
     [ApiController]

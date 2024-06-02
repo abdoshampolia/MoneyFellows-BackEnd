@@ -2,7 +2,7 @@
 using MediatR;
 using MoneyFellows.Application.Contracts.Repository;
 using MoneyFellows.Application.Dtos.Products;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 using MoneyFellows.Core.Entities;
 using Serilog;
 
@@ -25,7 +25,8 @@ namespace MoneyFellows.Application.Features.Products.Queries.GetProductById
         {
             try
             {
-                var product = await _productRepository.GetByIdAsync(request.Id);
+                var product = await _productRepository.GetByIdAsync(request.Id, "ProductsOrder.Order");
+
                 if (product is not null)
                 {
                     var result = _mapper.Map<Product, ProductDto>(product);

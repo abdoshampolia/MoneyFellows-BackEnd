@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyFellows.Core", "MoneyF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoneyFellows.Infrastructure", "MoneyFellows.Infrastructure\MoneyFellows.Infrastructure.csproj", "{8F9E805F-CE7E-4EC9-BDE8-2E1ADEC0D8DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonetFellows.UnitTest", "MonetFellows.UnitTest\MonetFellows.UnitTest.csproj", "{B0AA8B54-DE3A-496C-A0CD-1416ABF2083C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{8F9E805F-CE7E-4EC9-BDE8-2E1ADEC0D8DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F9E805F-CE7E-4EC9-BDE8-2E1ADEC0D8DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F9E805F-CE7E-4EC9-BDE8-2E1ADEC0D8DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0AA8B54-DE3A-496C-A0CD-1416ABF2083C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0AA8B54-DE3A-496C-A0CD-1416ABF2083C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0AA8B54-DE3A-496C-A0CD-1416ABF2083C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0AA8B54-DE3A-496C-A0CD-1416ABF2083C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{4E548F1B-21A8-41E6-BC68-85E234927853} = {78AC22ED-5F22-43ED-9AB4-A9DBFC5D2CF4}
 		{5F2C6952-8097-43A6-AF8B-A2F9285D0FAA} = {78AC22ED-5F22-43ED-9AB4-A9DBFC5D2CF4}
 		{8F9E805F-CE7E-4EC9-BDE8-2E1ADEC0D8DA} = {78AC22ED-5F22-43ED-9AB4-A9DBFC5D2CF4}
+		{B0AA8B54-DE3A-496C-A0CD-1416ABF2083C} = {FC87CAC0-F4E8-4BBB-A551-71A73DCE6411}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BB25E90E-033C-477E-A88D-888A77AB16C4}

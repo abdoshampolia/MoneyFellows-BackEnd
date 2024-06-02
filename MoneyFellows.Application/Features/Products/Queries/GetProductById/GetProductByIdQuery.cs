@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using MoneyFellows.Application.Dtos.Products;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 
 namespace MoneyFellows.Application.Features.Products.Queries.GetProductById
 {

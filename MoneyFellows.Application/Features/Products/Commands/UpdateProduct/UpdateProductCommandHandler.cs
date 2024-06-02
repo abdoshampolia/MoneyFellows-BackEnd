@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using MoneyFellows.Application.Contracts.Repository;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 using Serilog;
 
 namespace MoneyFellows.Application.Features.Products.Commands.UpdateProduct
@@ -21,11 +21,17 @@ namespace MoneyFellows.Application.Features.Products.Commands.UpdateProduct
             try
             {
                 var existingProduct = await _productRepository.GetByIdAsync(request.Id);
+                string pathFile = string.Empty;
 
                 if (existingProduct is not null)
                 {
+                    if (request.Image != null)
+                    {
+                        pathFile = await Helper.UploadFile(request.Image);
+                    }
+
                     //We must track the modifier user and send it to modify user id 
-                    var result = existingProduct.EditProduct(request.Name, request.Description, request.Price, request.Image);
+                    var result = existingProduct.EditProduct(request.Name, request.Description, request.Price, pathFile);
 
                     if (result)
                     {

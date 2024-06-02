@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using MoneyFellows.Application.Contracts.Repository;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 using MoneyFellows.Core.Entities;
 using Serilog;
 
@@ -21,13 +21,18 @@ namespace MoneyFellows.Application.Features.Products.Commands.CreateProduct
         {
             try
             {
-                var existingProduct = await _productRepository.GetAsync(p => p.Name == request.Name);
+                var existingProduct = (await _productRepository.GetAsync(p => p.Name == request.Name)).FirstOrDefault();
+                string pathFile = string.Empty;
 
                 if (existingProduct is null)
                 {
                     //We must track the creator user and send it to creator user id 
+                    if (request.Image != null)
+                    {
+                        pathFile = await Helper.UploadFile(request.Image);
+                    }
 
-                    var newProduct = new Product(Guid.NewGuid(), request.Name, request.Description, request.Image, request.Price, request.Merchant);
+                    var newProduct = new Product(Guid.NewGuid(), request.Name, request.Description, pathFile, request.Price, request.Merchant);
                     newProduct = await _productRepository.CreateOnDbAsync(newProduct);
                     _logger.Information("Product added successfully: {ProductName}", newProduct.Name);
                     return Response.Ok(Unit.Value);

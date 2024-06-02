@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MoneyFellows.Application.Helper;
+using MoneyFellows.Application.Helpers;
 using MoneyFellows.Core.VM;
 
 namespace MoneyFellows.Application.Features.Orders.Commands.UpdateOrder

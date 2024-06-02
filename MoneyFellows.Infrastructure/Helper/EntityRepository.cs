@@ -6,7 +6,7 @@ using MoneyFellows.Application.Dtos.Common.Extensions;
 
 namespace MoneyFellows.Infrastructure.Helper
 {
-    public abstract class EntityRepository<TEntity, TContext> : IEntityRepository<TEntity>, IDisposable
+    public abstract class EntityRepository<TEntity, TContext> : IEntityRepository<TEntity>
        where TEntity : class, IEntityBase where TContext : DbContext
     {
         private readonly DbSet<TEntity> dbSet;
@@ -16,7 +16,6 @@ namespace MoneyFellows.Infrastructure.Helper
             dbSet = context.Set<TEntity>();
             this.Context = context;
         }
-
         public async virtual Task<IQueryable<TEntity>> GetAsync(Expression<Func<TEntity, bool>>? filter = null)
         {
             IQueryable<TEntity> query = dbSet;
@@ -43,18 +42,6 @@ namespace MoneyFellows.Infrastructure.Helper
             var dbChangeTracker = await dbSet.AddAsync(entity);
             return dbChangeTracker.Entity;
         }
-        public virtual async Task CreateRangeAsync(params TEntity[] entities)
-        {
-            await dbSet.AddRangeAsync(entities);
-        }
-        public virtual async Task<TEntity?> UpdateAsync(TEntity entity)
-        {
-            return await Task.Run(() =>
-            {
-                var dbChangeTracker = dbSet.Update(entity);
-                return dbChangeTracker.State == EntityState.Modified ? dbChangeTracker.Entity : null;
-            });
-        }
         public virtual async Task<bool> DeleteAsync(Guid id)
         {
             TEntity? entityToDelete = await GetByIdAsync(id);
@@ -65,29 +52,10 @@ namespace MoneyFellows.Infrastructure.Helper
             }
             return false;
         }
-        public virtual async void DeleteRange(params Guid[] entitiesIds)
-        {
-            IQueryable<TEntity> entities = await GetAsync(e => entitiesIds.Contains(e.Id));
-            Context.RemoveRange(entities);
-        }
         public virtual async Task<int> SaveChangesAsync()
         {
             return await Context.SaveChangesAsync();
         }
-        public virtual void ClearTracking()
-        {
-            Context.ChangeTracker.Clear();
-        }
-        public void Dispose()
-        {
-            Context.Dispose();
-            GC.SuppressFinalize(this);
-        }
         public abstract IQueryable<TEntity> OrderBy(IQueryable<TEntity> entities, string? orderBy, bool isAccending = true);
-
-        ~EntityRepository()
-        {
-            Dispose();
-        }
     }
 }

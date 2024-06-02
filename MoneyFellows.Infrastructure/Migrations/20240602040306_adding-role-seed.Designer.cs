@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MoneyFellows.Infrastructure.Contexts;
 
@@ -11,9 +12,11 @@ using MoneyFellows.Infrastructure.Contexts;
 namespace MoneyFellows.Infrastructure.Migrations
 {
     [DbContext(typeof(MoneyFellowsDbContext))]
-    partial class MoneyFellowsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240602040306_adding-role-seed")]
+    partial class addingroleseed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,9 +197,9 @@ namespace MoneyFellows.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<byte[]>("Image")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
